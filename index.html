@@ -83,10 +83,10 @@
             <h2><strong>Resumen Ejecutivo</strong></h2>
             <div id="summary-content">
                 <p class="mb-4 justified-text">
-                    El análisis del desempeño en dólares muestra un resultado acumulado de <strong>u$s3.64 millones</strong> a agosto, manteniendo una rentabilidad positiva a pesar de la marcada volatilidad mensual. Se registraron dos meses con pérdidas operativas (mayo y agosto), lo que subraya la exposición de la compañía a las fluctuaciones del mercado.
+                    El análisis del desempeño en dólares muestra un resultado acumulado de <strong>u$s4.08 millones</strong> a agosto, manteniendo una rentabilidad positiva a pesar de la marcada volatilidad mensual. Se registraron dos meses con pérdidas operativas (mayo y agosto), lo que subraya la exposición de la compañía a las fluctuaciones del mercado.
                 </p>
                  <p class="mt-4 justified-text">
-                    La situación patrimonial sigue siendo sólida, con un crecimiento del activo del 37% y un Patrimonio Neto que aumentó un 6% en el período. Esto demuestra la capacidad de la empresa para generar valor.
+                    La situación patrimonial sigue siendo sólida, con un crecimiento del activo del 37% y un Patrimonio Neto que aumentó un 12% en el período. Esto demuestra la capacidad de la empresa para generar valor.
                 </p>
             </div>
              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -125,7 +125,7 @@
                 </table>
             </div>
             <p class="text-sm mt-4 text-gray-600 justified-text">
-                Margen Neto del Período: El margen total del período en dólares se ubicó en <strong>26.20%</strong>, demostrando una alta rentabilidad sobre los ingresos generados.
+                Margen Neto del Período: El margen total del período en dólares se ubicó en <strong>29.38%</strong>, demostrando una alta rentabilidad sobre los ingresos generados.
             </p>
         </div>
 
@@ -144,7 +144,7 @@
         <div class="card">
             <h2><strong>c) Evolución del Activo, Pasivo y Patrimonio Neto</strong></h2>
             <p class="mb-4 justified-text">
-                La estructura patrimonial en dólares se ha mantenido robusta. A pesar de la volatilidad operativa, el Patrimonio Neto ha crecido un 6% desde enero, manteniendo la solidez de la compañía.
+                La estructura patrimonial en dólares se ha mantenido robusta. A pesar de la volatilidad operativa, el Patrimonio Neto ha crecido un 12% desde enero, manteniendo la solidez de la compañía.
             </p>
             <div class="w-full h-96 mb-6">
                 <canvas id="patrimonioChart"></canvas>
@@ -162,7 +162,7 @@
         <div class="card">
             <h2><strong>d) Incidencia de Gastos por Centro de Costos (Acumulado Ene-Ago)</strong></h2>
             <p class="mb-4 justified-text">
-                El área de "Productores" concentra la mayor parte de los egresos, con un <strong>57,25%</strong> del total. "Mesa" y "Neix (Corporativo)" le siguen en importancia.
+                El área de "Productores" concentra la mayor parte de los egresos, con un <strong>57,45%</strong> del total. "Mesa" y "Neix (Corporativo)" le siguen en importancia.
             </p>
             <div class="flex flex-col md:flex-row items-center gap-6">
                 <div class="w-full md:w-1/2 h-80">
@@ -223,20 +223,20 @@
         const data = {
             patrimonial: { 
                 activo: [18756283.81, 24733788.54, 24504594.19, 29595725.50, 30084333.42, 34029679.68, 27714556.79, 25819222.98],
-                pasivo: [10755633.74, 16410941.09, 16582546.79, 19205681.02, 20998291.76, 24313543.51, 18870968.42, 17333234.04],
-                pn: [8000650.06, 8322847.45, 7922047.40, 10390044.48, 9086041.66, 9716136.17, 8843588.37, 8485988.94]
+                pasivo: [10755633.74, 16410941.09, 16582546.79, 19205681.02, 20998291.76, 24313543.51, 18630797.42, 16876957.04],
+                pn: [8000650.06, 8322847.45, 7922047.40, 10390044.48, 9086041.66, 9716136.17, 9083758.37, 8942265.94]
             },
             resultados: { 
                 ingresos: [1895470.28, 1663285.27, 586785.18, 2868228.10, 940443.01, 1735939.20, 1693917.90, 2492321.62],
-                egresos: [1067719.44, 926297.73, 446081.06, 1274530.17, 1209861.78, 960450.02, 1504218.84, 2851227.99],
-                resultado: [827750.84, 736987.54, 140704.12, 1593697.93, -269418.77, 775489.18, 189699.06, -358906.37]
+                egresos: [1067719.44, 926297.73, 446081.06, 1274530.17, 1209861.78, 960450.02, 1264048.84, 2650009.99],
+                resultado: [827750.84, 736987.54, 140704.12, 1593697.93, -269418.77, 775489.18, 429869.06, -157688.37]
             },
             cartera: { 
                 resultadoFinal: [1040597.56, 1030548.21, 324470.36, 2177633.25, 585851.71, 1170169.37, 730017.74, 115864.38]
             },
             gastos: { 
                 labels: ['Productores', 'Mesa', 'Neix (Corp.)', 'Back Office', 'Administración', 'IT', 'RRHH', 'Banca Comercial', 'MKTG', 'Mendoza', 'Banca Privada'],
-                acumulado: [1485221.41, 420750.80, 391580.02, 69379.68, 56115.32, 55716.17, 53232.57, 20297.58, 18726.29, 17546.34, 5569.89]
+                acumulado: [1485221.41, 469791.44, 391567.56, 69378.35, 56111.77, 55713.81, 53230.54, 20297.58, 18726.29, 17546.34, 5569.89]
             },
             gastosFijos: {
                 labels: ['Sueldos', 'Cargas Sociales', 'Serv. Contratados', 'Honorarios', 'Alquileres', 'Telefonía/Internet', 'Suscripciones', 'Obra Social', 'Autónomos'],
@@ -499,3 +499,4 @@
 </script>
 </body>
 </html>
+
