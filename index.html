@@ -86,7 +86,7 @@
                     El análisis del desempeño en dólares al cierre del tercer trimestre muestra un resultado acumulado de <strong>u$s4.27 millones</strong>, consolidando la rentabilidad del año gracias a un resultado positivo en septiembre que revirtió la pérdida de agosto. A pesar de la volatilidad, la capacidad de generación de la compañía se mantiene firme.
                 </p>
                  <p class="mt-4 justified-text">
-                    La situación patrimonial sigue siendo sólida. El Patrimonio Neto ha crecido un 4% en el período, demostrando la capacidad de la empresa para generar valor. La gestión del activo y pasivo ha sido prudente, manteniendo los ratios de solvencia en niveles saludables.
+                    La situación patrimonial sigue siendo sólida. El Patrimonio Neto ajustado por resultado acumulado ha crecido un 42,56% en el período, demostrando la capacidad de la empresa para generar valor. La gestión del activo y pasivo ha sido prudente, manteniendo los ratios de solvencia en niveles saludables.
                 </p>
             </div>
              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -98,7 +98,7 @@
                 <div class="p-4 bg-blue-50 rounded-lg metric-card border-blue-500">
                     <h4 class="font-bold text-lg text-blue-800">Activo Total a Septiembre</h4>
                     <p class="text-2xl font-semibold text-blue-900" id="kpi-activo-total"></p>
-                    <p class="text-sm text-gray-600">Aumento del 9% desde Enero.</p>
+                    <p class="text-sm text-gray-600">Aumento del 9,28% desde Enero.</p>
                 </div>
                 <div class="p-4 bg-purple-50 rounded-lg metric-card border-purple-500">
                     <h4 class="font-bold text-lg text-purple-800">Solvencia Promedio</h4>
@@ -144,7 +144,7 @@
         <div class="card">
             <h2><strong>c) Evolución del Activo, Pasivo y Patrimonio Neto</strong></h2>
             <p class="mb-4 justified-text">
-                La estructura patrimonial en dólares se ha fortalecido en septiembre, alcanzando los <strong>u$s8.31 millones</strong> y logrando un crecimiento del 4% en lo que va del año.
+                La estructura patrimonial en dólares, incluiyendo el resultado acumulado del ejercicio, muestra una evolución muy positiva. El Patrimonio Neto ajustado creció un 42,56% en el período, alcanzando los <strong>u$s12.586 millones</strong> al cierre de septiembre. Esto refleja de manera más precisa cómo la rentabilidad del ejercicio impacta directamente en el valor de la compañía.
             </p>
             <div class="w-full h-96 mb-6">
                 <canvas id="patrimonioChart"></canvas>
@@ -162,13 +162,13 @@
         <div class="card">
             <h2><strong>d) Incidencia de Gastos por Centro de Costos (Acumulado Ene-Sep)</strong></h2>
             <p class="mb-4 justified-text">
-                El área de "Productores" mantiene la mayor concentración de los egresos acumulados, con un <strong>55.53%</strong> del total. La estructura general de costos por centro no presenta cambios significativos respecto a meses anteriores.
+                El área de "Productores" mantiene la mayor concentración de los egresos acumulados, con un <strong>56.36%</strong> del total. La estructura general de costos por centro no presenta cambios significativos respecto a meses anteriores.
             </p>
             <div class="flex flex-col md:flex-row items-center gap-6">
                 <div class="w-full md:w-1/2 h-80">
                     <canvas id="gastosChart"></canvas>
                 </div>
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-1/Deberías ver los cambios reflejados. ¡Avísame si necesitás algo más!/2">
                     <ul class="space-y-2" id="lista-gastos-cc">
                         <!-- Generado por JS -->
                     </ul>
@@ -205,7 +205,7 @@
                         <br>Recomendación: Continuar con la revisión de la política de gestión de riesgos. Capitalizar la buena performance de septiembre para analizar qué estrategias funcionaron y replicarlas, mientras se mantienen los límites de exposición estrictos.
                     </li>
                     <li class="justified-text">
-                        <strong>Fortaleza y Crecimiento Patrimonial:</strong> El crecimiento del Patrimonio Neto es una excelente noticia y el principal pilar de la compañía, permitiendo absorber los shocks operativos y seguir creciendo.
+                        <strong>Fortaleza y Crecimiento Patrimonial:</strong> El crecimiento del Patrimonio Neto (42,56% YTD) es una excelente noticia y el principal pilar de la compañía, permitiendo absorber los shocks operativos y seguir creciendo.
                         <br>Recomendación: Evaluar la posibilidad de reinvertir una porción de las utilidades acumuladas en líneas de negocio con ingresos más predecibles (ej. comisiones, research) para estabilizar el flujo de fondos mensual.
                     </li>
                     <li class="justified-text">
@@ -219,16 +219,19 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // --- DATOS FINANCIEROS (USD) - ACTUALIZADO A SEPTIEMBRE Y CORREGIDO ---
+        // --- DATOS FINANCIEROS (USD) - ACTUALIZADO A SEPTIEMBRE Y CORREGIDO (PN) ---
         const data = {
             patrimonial: { 
                 activo: [18756283.81, 24733788.54, 24504594.19, 29595725.50, 30084333.42, 34029679.68, 27714556.79, 25819222.98, 20498441.42],
                 pasivo: [10755633.74, 16410941.09, 16582546.79, 19205681.02, 20998291.76, 24313543.51, 18761574.37, 16861461.91, 12182672.72],
-                pn: [8000650.06, 8322847.45, 7922047.40, 10390044.48, 9086041.66, 9716136.17, 8952982.42, 8957761.07, 8315768.70]
+                // PN Ajustado = (Activo - Pasivo) + Resultado Acumulado. Datos de la imagen.
+                pn: [8828400.91, 9887585.83, 9627489.90, 13689184.91, 12115763.32, 13521347.02, 13057286.38, 13050881.41, 12586394.93],
+                // Resultado Acumulado. Datos de la imagen.
+                resultadoAcumulado: [827750.84, 1564738.38, 1705442.50, 3299140.43, 3029721.66, 3805210.85, 4104303.96, 4093120.34, 4270626.23]
             },
             resultados: { 
                 ingresos: [1895470.28, 1663285.27, 586785.18, 2868228.10, 940443.01, 1735939.20, 1693917.90, 2492321.62, 2554781.55],
-                egresos: [1067719.44, 926297.73, 446081.06, 1274530.17, 1209861.78, 960450.02, 1394827.79, 2503505.24, 2377275.66],
+                egresos: [1067719.44, 926297.73, 446081.06, 1274530.17, 1209861.78, 960450.02, 1394824.79, 2503505.24, 2377275.66],
                 resultado: [827750.84, 736987.54, 140704.12, 1593697.93, -269418.77, 775489.18, 299093.11, -11183.62, 177505.89]
             },
             cartera: { 
@@ -236,11 +239,11 @@
             },
             gastos: { 
                 labels: ['Productores', 'Mesa', 'Neix (Corp.)', 'Back Office', 'Administración', 'IT', 'RRHH', 'Banca Comercial', 'MKTG', 'Mendoza', 'Banca Privada'],
-                acumulado: [1721419.19, 546096.02, 441765.02, 75889.90, 61327.23, 62668.04, 70558.13, 23379.02, 23851.20, 19292.31, 8229.53]
+                acumulado: [1721419.19, 546096.02, 441765.02, 75889.90, 70558.13, 62668.04, 61327.23, 23851.20, 23379.02, 19292.31, 8229.53]
             },
             gastosFijos: {
                 labels: ['Sueldos', 'Cargas Sociales', 'Serv. Contratados', 'Honorarios', 'Alquileres', 'Telefonía/Internet', 'Suscripciones', 'Obra Social', 'Autónomos'],
-                acumulado: [1998988.52, 491140.36, 453340.22, 162168.50, 160807.54, 22852.09, 21173.50, 19424.70, 2337.06, 1166.13]
+                acumulado: [1998988.52, 491140.36, 453340.22, 162168.50, 160807.54, 23913.74, 22234.33, 19424.70, 2337.06]
             }
         };
         const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep'];
@@ -249,18 +252,19 @@
         const formatCurrency = (value) => {
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'decimal',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
+                minimumFractionDigits: 0, // SIN DECIMALES
+                maximumFractionDigits: 0  // SIN DECIMALES
             });
             return 'u$s ' + formatter.format(value);
         };
 
         // --- KPIs ---
-        const resultadoAcumuladoFinal = data.resultados.resultado.reduce((a, b) => a + b, 0);
+        // El resultado acumulado se toma ahora del array patrimonial para consistencia
+        const resultadoAcumuladoFinal = data.patrimonial.resultadoAcumulado[data.patrimonial.resultadoAcumulado.length - 1];
         document.getElementById('kpi-resultado-acumulado').innerText = formatCurrency(resultadoAcumuladoFinal);
         document.getElementById('kpi-activo-total').innerText = formatCurrency(data.patrimonial.activo[data.patrimonial.activo.length - 1]);
         const solvenciaPromedio = data.patrimonial.activo.reduce((sum, val, i) => sum + (val / data.patrimonial.pasivo[i]), 0) / meses.length;
-        document.getElementById('kpi-solvencia').innerText = solvenciaPromedio.toFixed(2);
+        document.getElementById('kpi-solvencia').innerText = solvenciaPromedio.toFixed(2); // CON 2 DECIMALES
         
         // --- TABLA RESULTADOS ---
         const tablaResultados = document.getElementById('tabla-resultados');
@@ -281,10 +285,11 @@
                     <td class="number">${formatCurrency(ingreso)}</td>
                     <td class="number">${formatCurrency(egreso)}</td>
                     <td class="number font-semibold ${resultado < 0 ? 'text-loss' : ''}">${formatCurrency(resultado)}</td>
-                    <td class="number ${margen < 0 ? 'text-loss' : ''}">${(margen * 100).toFixed(2)}%</td>
+                    <td class="number ${margen < 0 ? 'text-loss' : ''}">${(margen * 100).toFixed(2)}%</td> 
                 </tr>
             `;
         });
+        // Aseguramos que el totalResultado coincida con el KPI
         const margenTotal = totalIngresos !== 0 ? totalResultado / totalIngresos : 0;
         bodyResultados += `
             <tr class="font-bold bg-gray-200">
@@ -298,20 +303,26 @@
         bodyResultados += '</tbody>';
         tablaResultados.innerHTML = headerResultados + bodyResultados;
 
-        // --- TABLA PATRIMONIO ---
+        // --- TABLA PATRIMONIO (MODIFICADA) ---
         const tablaPatrimonio = document.getElementById('tabla-patrimonio');
-        let headerPatrimonio = `<thead><tr><th>Mes</th><th class="number">Activo</th><th class="number">Pasivo</th><th class="number">Pat. Neto</th><th class="number">Solvencia</th><th class="number">Apalancamiento</th></tr></thead>`;
+        let headerPatrimonio = `<thead><tr><th>Mes</th><th class="number">Activo</th><th class="number">Pasivo</th><th class="number">Res. Acum.</th><th class="number">Pat. Neto (Ajustado)</th><th class="number">Solvencia</th><th class="number">Apalancamiento</th></tr></thead>`;
         let bodyPatrimonio = '<tbody>';
         meses.forEach((mes, i) => {
-            const solvencia = data.patrimonial.pasivo[i] !== 0 ? data.patrimonial.activo[i] / data.patrimonial.pasivo[i] : 0;
-            const apalancamiento = data.patrimonial.pn[i] !== 0 ? data.patrimonial.pasivo[i] / data.patrimonial.pn[i] : 0;
+            const activo = data.patrimonial.activo[i];
+            const pasivo = data.patrimonial.pasivo[i];
+            const resAcum = data.patrimonial.resultadoAcumulado[i]; // Nuevo
+            const pn = data.patrimonial.pn[i]; // Nuevo PN
+            const solvencia = pasivo !== 0 ? activo / pasivo : 0;
+            const apalancamiento = pn !== 0 ? pasivo / pn : 0; // Recalculado
+            
             bodyPatrimonio += `
                 <tr>
                     <td>${mes}</td>
-                    <td class="number">${formatCurrency(data.patrimonial.activo[i])}</td>
-                    <td class="number">${formatCurrency(data.patrimonial.pasivo[i])}</td>
-                    <td class="number">${formatCurrency(data.patrimonial.pn[i])}</td>
-                    <td class="number">${solvencia.toFixed(2)}</td>
+                    <td class="number">${formatCurrency(activo)}</td>
+                    <td class="number">${formatCurrency(pasivo)}</td>
+                    <td class="number">${formatCurrency(resAcum)}</td>
+                    <td class="number font-semibold">${formatCurrency(pn)}</td>
+                    <td class="number">${solvencia.toFixed(2)}</td> 
                     <td class="number">${apalancamiento.toFixed(2)}</td>
                 </tr>
             `;
@@ -327,7 +338,7 @@
                 y: {
                     ticks: {
                         callback: function(value) {
-                            return 'u$s ' + (value / 1e6).toFixed(1) + 'M';
+                            return 'u$s ' + (value / 1e6).toFixed(0) + 'M'; // SIN DECIMALES
                         }
                     }
                 }
@@ -353,7 +364,7 @@
                 tooltip: {
                      callbacks: {
                         label: function(context) {
-                            return ` ${context.label}: ${context.raw.toFixed(2)}%`;
+                            return ` ${context.label}: ${context.raw.toFixed(2)}%`; // CON 2 DECIMALES
                         }
                     }
                 }
@@ -410,7 +421,7 @@
             options: chartOptions(true)
         });
 
-        // Gráfico 3: Patrimonio
+        // Gráfico 3: Patrimonio (MODIFICADO)
         new Chart(document.getElementById('patrimonioChart'), {
             type: 'line',
             data: {
@@ -433,8 +444,8 @@
                         tension: 0.3
                     },
                     {
-                        label: 'Patrimonio Neto',
-                        data: data.patrimonial.pn,
+                        label: 'Patrimonio Neto (Ajustado)', // Etiqueta actualizada
+                        data: data.patrimonial.pn, // Usando el nuevo array de PN
                         borderColor: 'rgb(14, 165, 233)',
                         backgroundColor: 'rgba(14, 165, 233, 0.2)',
                         fill: true,
@@ -452,7 +463,7 @@
         data.gastos.labels.forEach((label, i) => {
             const li = document.createElement('li');
             li.className = 'flex justify-between';
-            li.innerHTML = `<span>${i+1}. ${label}:</span> <span class="font-semibold">${formatCurrency(data.gastos.acumulado[i])} (${porcentajesGastosCC[i].toFixed(2)}%)</span>`;
+            li.innerHTML = `<span>${i+1}. ${label}:</span> <span class="font-semibold">${formatCurrency(data.gastos.acumulado[i])} (${porcentajesGastosCC[i].toFixed(2)}%)</span>`; // CON 2 DECIMALES
             listaGastosCC.appendChild(li);
         });
 
@@ -477,7 +488,7 @@
         data.gastosFijos.labels.forEach((label, i) => {
             const li = document.createElement('li');
             li.className = 'flex justify-between';
-            li.innerHTML = `<span>${i+1}. ${label}:</span> <span class="font-semibold">${formatCurrency(data.gastosFijos.acumulado[i])} (${porcentajesGastosFijos[i].toFixed(2)}%)</span>`;
+            li.innerHTML = `<span>${i+1}. ${label}:</span> <span class="font-semibold">${formatCurrency(data.gastosFijos.acumulado[i])} (${porcentajesGastosFijos[i].toFixed(2)}%)</span>`; // CON 2 DECIMALES
             listaGastosFijos.appendChild(li);
         });
 
@@ -499,5 +510,6 @@
 </script>
 </body>
 </html>
+
 
 
