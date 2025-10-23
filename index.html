@@ -86,7 +86,7 @@
                     El análisis del desempeño en dólares al cierre del tercer trimestre muestra un resultado acumulado de <strong>u$s4.27 millones</strong>, consolidando la rentabilidad del año gracias a un resultado positivo en septiembre que revirtió la pérdida de agosto. A pesar de la volatilidad, la capacidad de generación de la compañía se mantiene firme.
                 </p>
                  <p class="mt-4 justified-text">
-                    La situación patrimonial sigue siendo sólida. El Patrimonio Neto ajustado por resultado acumulado ha crecido un 42,56% en el período, demostrando la capacidad de la empresa para generar valor. La gestión del activo y pasivo ha sido prudente, manteniendo los ratios de solvencia en niveles saludables.
+                    La situación patrimonial sigue siendo sólida. El Patrimonio Neto ha crecido un <strong>3.94%</strong> en el período, demostrando la capacidad de la empresa para generar valor. La gestión del activo y pasivo ha sido prudente, manteniendo los ratios de solvencia en niveles saludables.
                 </p>
             </div>
              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -144,7 +144,7 @@
         <div class="card">
             <h2><strong>c) Evolución del Activo, Pasivo y Patrimonio Neto</strong></h2>
             <p class="mb-4 justified-text">
-                La estructura patrimonial en dólares, incluiyendo el resultado acumulado del ejercicio, muestra una evolución muy positiva. El Patrimonio Neto ajustado creció un 42,56% en el período, alcanzando los <strong>u$s12.586 millones</strong> al cierre de septiembre. Esto refleja de manera más precisa cómo la rentabilidad del ejercicio impacta directamente en el valor de la compañía.
+                La estructura patrimonial en dólares se ha mantenido robusta. A pesar de la volatilidad operativa, el Patrimonio Neto ha crecido un <strong>3.94%</strong> desde enero, alcanzando los <strong>u$s8.315 millones</strong> al cierre de septiembre, manteniendo la solidez de la compañía.
             </p>
             <div class="w-full h-96 mb-6">
                 <canvas id="patrimonioChart"></canvas>
@@ -205,7 +205,7 @@
                         <br>Recomendación: Continuar con la revisión de la política de gestión de riesgos. Capitalizar la buena performance de septiembre para analizar qué estrategias funcionaron y replicarlas, mientras se mantienen los límites de exposición estrictos.
                     </li>
                     <li class="justified-text">
-                        <strong>Fortaleza y Crecimiento Patrimonial:</strong> El crecimiento del Patrimonio Neto (42,56% YTD) es una excelente noticia y el principal pilar de la compañía, permitiendo absorber los shocks operativos y seguir creciendo.
+                        <strong>Fortaleza y Crecimiento Patrimonial:</strong> El crecimiento del Patrimonio Neto (3.94% YTD) es una excelente noticia y el principal pilar de la compañía, permitiendo absorber los shocks operativos y seguir creciendo.
                         <br>Recomendación: Evaluar la posibilidad de reinvertir una porción de las utilidades acumuladas en líneas de negocio con ingresos más predecibles (ej. comisiones, research) para estabilizar el flujo de fondos mensual.
                     </li>
                     <li class="justified-text">
@@ -224,10 +224,8 @@
             patrimonial: { 
                 activo: [18756283.81, 24733788.54, 24504594.19, 29595725.50, 30084333.42, 34029679.68, 27714556.79, 25819222.98, 20498441.42],
                 pasivo: [10755633.74, 16410941.09, 16582546.79, 19205681.02, 20998291.76, 24313543.51, 18761574.37, 16861461.91, 12182672.72],
-                // PN Ajustado = (Activo - Pasivo) + Resultado Acumulado. Datos de la imagen.
-                pn: [8828400.91, 9887585.83, 9627489.90, 13689184.91, 12115763.32, 13521347.02, 13057286.38, 13050881.41, 12586394.93],
-                // Resultado Acumulado. Datos de la imagen.
-                resultadoAcumulado: [827750.84, 1564738.38, 1705442.50, 3299140.43, 3029721.66, 3805210.85, 4104303.96, 4093120.34, 4270626.23]
+                // PN = Activo - Pasivo
+                pn: [8000650.07, 8322847.45, 7922047.40, 10390044.48, 9086041.66, 9716136.17, 8952982.42, 8957761.07, 8315768.70]
             },
             resultados: { 
                 ingresos: [1895470.28, 1663285.27, 586785.18, 2868228.10, 940443.01, 1735939.20, 1693917.90, 2492321.62, 2554781.55],
@@ -260,7 +258,7 @@
 
         // --- KPIs ---
         // El resultado acumulado se toma ahora del array patrimonial para consistencia
-        const resultadoAcumuladoFinal = data.patrimonial.resultadoAcumulado[data.patrimonial.resultadoAcumulado.length - 1];
+        const resultadoAcumuladoFinal = data.resultados.resultado.reduce((a, b) => a+b, 0);
         document.getElementById('kpi-resultado-acumulado').innerText = formatCurrency(resultadoAcumuladoFinal);
         document.getElementById('kpi-activo-total').innerText = formatCurrency(data.patrimonial.activo[data.patrimonial.activo.length - 1]);
         const solvenciaPromedio = data.patrimonial.activo.reduce((sum, val, i) => sum + (val / data.patrimonial.pasivo[i]), 0) / meses.length;
@@ -305,12 +303,11 @@
 
         // --- TABLA PATRIMONIO (MODIFICADA) ---
         const tablaPatrimonio = document.getElementById('tabla-patrimonio');
-        let headerPatrimonio = `<thead><tr><th>Mes</th><th class="number">Activo</th><th class="number">Pasivo</th><th class="number">Res. Acum.</th><th class="number">Pat. Neto (Ajustado)</th><th class="number">Solvencia</th><th class="number">Apalancamiento</th></tr></thead>`;
+        let headerPatrimonio = `<thead><tr><th>Mes</th><th class="number">Activo</th><th class="number">Pasivo</th><th class="number">Pat. Neto</th><th class="number">Solvencia</th><th class="number">Apalancamiento</th></tr></thead>`;
         let bodyPatrimonio = '<tbody>';
         meses.forEach((mes, i) => {
             const activo = data.patrimonial.activo[i];
             const pasivo = data.patrimonial.pasivo[i];
-            const resAcum = data.patrimonial.resultadoAcumulado[i]; // Nuevo
             const pn = data.patrimonial.pn[i]; // Nuevo PN
             const solvencia = pasivo !== 0 ? activo / pasivo : 0;
             const apalancamiento = pn !== 0 ? pasivo / pn : 0; // Recalculado
@@ -320,7 +317,6 @@
                     <td>${mes}</td>
                     <td class="number">${formatCurrency(activo)}</td>
                     <td class="number">${formatCurrency(pasivo)}</td>
-                    <td class="number">${formatCurrency(resAcum)}</td>
                     <td class="number font-semibold">${formatCurrency(pn)}</td>
                     <td class="number">${solvencia.toFixed(2)}</td> 
                     <td class="number">${apalancamiento.toFixed(2)}</td>
@@ -444,7 +440,7 @@
                         tension: 0.3
                     },
                     {
-                        label: 'Patrimonio Neto (Ajustado)', // Etiqueta actualizada
+                        label: 'Patrimonio Neto', // Etiqueta actualizada
                         data: data.patrimonial.pn, // Usando el nuevo array de PN
                         borderColor: 'rgb(14, 165, 233)',
                         backgroundColor: 'rgba(14, 165, 233, 0.2)',
@@ -510,6 +506,7 @@
 </script>
 </body>
 </html>
+
 
 
 
